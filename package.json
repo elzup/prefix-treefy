@@ -1,0 +1,12 @@
+{
+  "name": "prefix-treefy",
+  "type": "commonjs",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^11.0.0",
+    "typescript": "^5.0.0"
+  }
+}
