@@ -1,12 +1,20 @@
 import { buildCharTrie } from './utils/buildCharTrie'
-import { readFileSync, writeFile, writeFileSync } from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 
-const raw = readFileSync('data/poke.txt', 'utf-8')
-const names = raw
+const inputPath = process.argv[2]
+
+if (!inputPath) {
+  console.error('ts-node index.ts data/poke.txt)')
+  process.exit(1)
+}
+
+const raw = readFileSync(inputPath, 'utf-8')
+const words = raw
   .split('\n')
   .map((line) => line.trim())
   .filter(Boolean)
+const trie = buildCharTrie(words)
 
-const trie = buildCharTrie(names)
+writeFileSync('data/trie.json', JSON.stringify(trie, null, 2), 'utf-8')
 
-writeFileSync('data/poke-trie.json', JSON.stringify(trie, null, 2))
+console.log('data/trie.json created')
